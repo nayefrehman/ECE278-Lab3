@@ -31,7 +31,9 @@ void printList(struct Node* head) {
 // Function to reverse a singly linked list
 // 1 Mark
 struct Node* reverseList(struct Node* head) {
-
+    Struct Node * prev = NULL; // creates a previous pointer and setting it to NULL
+    Struct Node * current = head; // creates a current pointer and assigns it to whatever the head is pointing to 
+    Struct Node * next = NULL; // creates a next pointer and setting it to NULL
 }
 
 // Function to find the middle value of the list
