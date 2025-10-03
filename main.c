@@ -88,13 +88,41 @@ void returnElementsFront(struct Node* head, int n){
 }
 
 void returnElementsBack(struct Node* head, int n){
+    struct Node* traverse = head; // set the traverse pointer to head 
+    int count = 0; // counter to keep track of the number of elements in the linked list 
+
+    while(traverse != NULL){
+        count++;
+        traverse = traverse -> next;
+    }
+
+    int skip = count - n; // calculates how many elements to skip
+
+    traverse = head; // reset traverse pointer to head
+    for(int i = 0; i < skip; i++){
+        traverse = traverse -> next; // this moves the traverse pointer to the node where we want to start printing from
+    }
     
+    while(traverse != NULL){
+        printf("%d ", traverse -> val);
+        traverse = traverse -> next;
+    }
 }
 
 //Function to delete duplicate values in a list - assume only consecutive duplicates
 // 1 Mark
 struct Node* deleteDuplicates(struct Node* head){
-
+    struct Node* current = head; // sets the current pointer to head
+    while(current != NULL && current -> next != NULL){
+        if(current -> val == current -> next -> val){
+            struct Node* temp = current -> next; // this sets a temp pointer to the duplicate node
+            current -> next = current -> next -> next; // this makes the current node point to the node after the duplicate node
+            free(temp); // frees the memory allocated for the duplicate node
+        } else {
+            current = current -> next; // moves the current pointer to the next node as there was no duplicate
+        }
+    }
+    return head;
 }
 
 
